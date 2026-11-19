@@ -125,10 +125,67 @@ textarea.bk{width:calc(100% - 32px);margin:0 16px;height:180px;border:0;border-r
 .seg{display:flex;background:var(--fill);border-radius:9px;padding:2px;margin:0 16px}
 .seg button{flex:1;padding:6px;border-radius:7px;font-size:13px;font-weight:500}
 .seg button.on{background:var(--card);box-shadow:0 3px 8px rgba(0,0,0,.12)}
+
+/* ===== Liquid Glass ===== */
+:root{--glass:rgba(255,255,255,.55);--glass-strong:rgba(250,250,252,.80);--gb:rgba(255,255,255,.8);
+  --gsh:0 8px 28px rgba(0,0,0,.10),0 1px 3px rgba(0,0,0,.06);--hl:inset 0 1px 0 rgba(255,255,255,.95),inset 0 -1px 1px rgba(255,255,255,.4)}
+@media (prefers-color-scheme: dark){:root{--glass:rgba(60,60,66,.45);--glass-strong:rgba(36,36,40,.82);--gb:rgba(255,255,255,.14);
+  --gsh:0 10px 30px rgba(0,0,0,.55);--hl:inset 0 1px 0 rgba(255,255,255,.20),inset 0 -1px 1px rgba(255,255,255,.06)}}
+html{background:var(--bg)} body{background:transparent}
+.ambient{position:fixed;inset:0;z-index:-1;pointer-events:none;background:
+  radial-gradient(70% 38% at 10% -4%,rgba(0,200,255,.24),transparent 70%),
+  radial-gradient(55% 34% at 100% 6%,rgba(110,90,255,.20),transparent 70%),
+  radial-gradient(70% 40% at 50% 108%,rgba(0,122,255,.14),transparent 70%)}
+.gl{background:var(--glass);-webkit-backdrop-filter:blur(18px) saturate(190%);backdrop-filter:blur(18px) saturate(190%);border:.5px solid var(--gb);box-shadow:var(--hl),var(--gsh)}
+.nav{height:calc(var(--sat) + 58px);padding:var(--sat) 16px 0;background:linear-gradient(to bottom,var(--bg) 0%,color-mix(in srgb,var(--bg) 75%,transparent) 55%,transparent);-webkit-backdrop-filter:none;backdrop-filter:none}
+.nav.line{box-shadow:none}
+.spc{width:44px}
+.nb{width:44px;height:44px;min-width:44px;padding:0;border-radius:22px;justify-content:center;color:var(--text);font-weight:500;transition:transform .15s}
+.nb:active,.gbtn:active,.btn:active,.tabbar button:active{transform:scale(.94)}
+.nb svg{width:11px;height:19px;margin-right:2px}
+.nb.r{width:auto;padding:0 18px;justify-content:center}
+.nb.bold{background:var(--blue);color:#fff;border-color:transparent;box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 6px 18px color-mix(in srgb,var(--blue) 40%,transparent)}
+h1{margin-top:0}
+.group{border-radius:26px}
+.row,.row .body{min-height:52px}
+.day-ic{border-radius:14px}
+.btn{border-radius:999px;padding:16px;background:linear-gradient(180deg,color-mix(in srgb,var(--blue) 80%,#fff),var(--blue));box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 10px 24px color-mix(in srgb,var(--blue) 35%,transparent);transition:transform .15s}
+.tabbar{left:50%;right:auto;bottom:max(12px,calc(var(--sab) - 8px));transform:translateX(-50%);width:min(calc(100% - 48px),360px);border-radius:999px;padding:6px;gap:2px}
+.tabbar button{padding:6px 0 5px;border-radius:999px;transition:background .2s,transform .15s}
+.tabbar button.on{background:color-mix(in srgb,var(--blue) 14%,transparent)}
+.tabbar svg{width:24px;height:24px}
+.page{padding-bottom:calc(var(--sab) + 120px)}
+.dim{background:rgba(0,0,0,.25)}
+.sheet{left:8px;right:8px;bottom:8px;border-radius:38px;padding-bottom:calc(var(--sab) * .6 + 10px);background:var(--glass-strong);-webkit-backdrop-filter:blur(30px) saturate(190%);backdrop-filter:blur(30px) saturate(190%);border:.5px solid var(--gb);box-shadow:var(--hl),0 20px 60px rgba(0,0,0,.25)}
+.sheet.tall{top:calc(var(--sat) + 10px)}
+.sheet .sh{height:68px;padding:0 12px}
+.gbtn{height:44px;min-width:44px;border-radius:22px;display:inline-flex;align-items:center;justify-content:center;padding:0 16px;font-weight:600;transition:transform .15s}
+.gbtn.circle{padding:0;width:44px}
+.gbtn svg{width:14px;height:14px}
+.gbtn.tint{background:var(--blue);color:#fff;border-color:transparent;box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 6px 18px color-mix(in srgb,var(--blue) 40%,transparent)}
+.gbtn.off{opacity:.4}
+.search{border-radius:999px;padding:10px 14px}
+.sheet .group{border-radius:24px}
+.alert{width:300px;border-radius:34px;background:var(--glass-strong);-webkit-backdrop-filter:blur(30px) saturate(190%);backdrop-filter:blur(30px) saturate(190%);border:.5px solid var(--gb);box-shadow:var(--hl),0 20px 60px rgba(0,0,0,.3)}
+.alert .m{padding:24px 22px 18px}
+.alert b{font-size:17px}
+.alert p{font-size:15px;color:var(--sec)}
+.alert .acts{gap:10px;padding:0 16px 16px;box-shadow:none}
+.alert .acts button{height:48px;border-radius:999px;background:var(--fill);color:var(--text);font-weight:500}
+.alert .acts button+button{box-shadow:none}
+.alert .acts .bold{background:var(--blue);color:#fff;font-weight:600}
+.alert .acts .red{background:var(--red);color:#fff;font-weight:600}
+.toast{bottom:calc(max(12px,calc(var(--sab) - 8px)) + 84px);background:var(--glass-strong);-webkit-backdrop-filter:blur(20px) saturate(190%);backdrop-filter:blur(20px) saturate(190%);border:.5px solid var(--gb);box-shadow:var(--hl),var(--gsh)}
+.seg{border-radius:999px;padding:3px}
+.seg button{border-radius:999px;padding:8px}
+.switch{width:62px;height:28px;border-radius:14px}
+.switch:after{width:38px;height:24px;border-radius:12px}
+.switch.on:after{transform:translateX(20px)}
+.wheels:before{border-radius:12px}
 </style>
 </head>
 <body>
-<div id="app"></div>
+<div class="ambient"></div><div id="app"></div>
 <script>
 (() => {
 "use strict";
@@ -184,8 +241,8 @@ const ICONS = {
 
 /* ============ Views ============ */
 function nav({back, title, right}){
-  return `<div class="nav" data-nav>${back ? `<button class="nb" data-act="back">${BACK}<span>${esc(back)}</span></button>` : `<span class="nb"></span>`}
-    <span class="t">${esc(title || "")}</span>${right || `<span class="nb r"></span>`}</div>`;
+  return `<div class="nav" data-nav>${back ? `<button class="nb gl" data-act="back" aria-label="Back to ${esc(back)}">${BACK}</button>` : `<span class="spc"></span>`}
+    <span class="t">${esc(title || "")}</span>${right || `<span class="spc"></span>`}</div>`;
 }
 
 function weekView(){
@@ -208,7 +265,7 @@ function weekView(){
 function dayView(di){
   const d = D.days[di], ed = S.editing, tk = todayKey();
   let html = `<div class="page ${S.anim}">${nav({back:"Week", title: d.rest && !ed ? DAY_NAMES[di] : d.title,
-    right:`<button class="nb r ${ed?"bold":""}" data-act="toggle-edit">${ed?"Done":"Edit"}</button>`})}`;
+    right:`<button class="nb r gl ${ed?"bold":""}" data-act="toggle-edit">${ed?"Done":"Edit"}</button>`})}`;
   if (ed) {
     html += `<h1>${esc(DAY_NAMES[di])}</h1>
       <div class="group mt">
@@ -241,7 +298,7 @@ function dayView(di){
 function exView(di, ei){
   const d = D.days[di], ex = d.exercises[ei], ed = S.editing;
   if (!ex) { S.stack.pop(); return currentView(); }
-  return `<div class="page ${S.anim}">${nav({back: d.title, title: ex.name, right:`<button class="nb r ${ed?"bold":""}" data-act="toggle-edit">${ed?"Done":"Edit"}</button>`})}
+  return `<div class="page ${S.anim}">${nav({back: d.title, title: ex.name, right:`<button class="nb r gl ${ed?"bold":""}" data-act="toggle-edit">${ed?"Done":"Edit"}</button>`})}
     <input class="h1in" data-f="ex-name" value="${esc(ex.name)}" maxlength="40" placeholder="Exercise name">
     <div class="sub">Tap the name to rename it</div>
     <div class="hdr">Sets</div>
@@ -321,7 +378,7 @@ function addSheet(){
   }
   if (ql && !list.includes('data-act="pick"')) list += `<div class="foot">No match. Type it in Custom Exercise above.</div>`;
   return `<div class="dim" data-act="close-sheet"></div><div class="sheet tall">
-    <div class="sh"><button class="nb" data-act="close-sheet">Cancel</button><b>Add Exercise</b><button class="nb r bold" data-act="confirm-add" style="${sel.length?"":"opacity:.35"}">Add${sel.length?` (${sel.length})`:""}</button></div>
+    <div class="sh"><button class="gbtn gl circle" data-act="close-sheet" aria-label="Cancel"><svg viewBox="0 0 14 14"><path d="M2 2l10 10M12 2L2 12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button><b>Add Exercise</b><button class="gbtn gl tint ${sel.length?"":"off"}" data-act="confirm-add">Add${sel.length?` ${sel.length}`:""}</button></div>
     <div class="search"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="7" cy="7" r="5"/><path d="M11 11l3.5 3.5" stroke-linecap="round"/></svg><input id="q" placeholder="Search" value="${esc(q)}" autocomplete="off"></div>
     <div class="scroll" id="sheetList">${list}</div></div>`;
 }
@@ -333,13 +390,13 @@ function wheelSheet(){
   const ws = weightsList();
   const col = (name, vals, fmt) => `<div class="wcol" data-col="${name}"><div class="pad"></div><div class="pad"></div>${vals.map(v => `<div>${fmt(v)}</div>`).join("")}<div class="pad"></div><div class="pad"></div></div>`;
   return `<div class="dim" data-act="close-sheet"></div><div class="sheet">
-    <div class="sh"><button class="nb" data-act="close-sheet">Cancel</button><b>Set ${si+1}</b><button class="nb r bold" data-act="save-set">Done</button></div>
+    <div class="sh"><button class="gbtn gl circle" data-act="close-sheet" aria-label="Cancel"><svg viewBox="0 0 14 14"><path d="M2 2l10 10M12 2L2 12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button><b>Set ${si+1}</b><button class="gbtn gl circle tint" data-act="save-set" aria-label="Done"><svg viewBox="0 0 14 14"><path d="M2 7.5l3.2 3.2L12 3.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
     <div class="wheels">${col("r", REPS, v => v)}<div class="wunit">reps</div>${col("w", ws, v => v === 0 ? "–" : v)}<div class="wunit">${D.unit}</div></div>
     <div class="foot" style="text-align:center;margin:0 16px 6px">Scroll to pick. Leave weight on “–” for bodyweight.</div></div>`;
 }
 function restoreSheet(){
   return `<div class="dim" data-act="close-sheet"></div><div class="sheet">
-    <div class="sh"><button class="nb" data-act="close-sheet">Cancel</button><b>Restore Backup</b><button class="nb r bold" data-act="do-restore">Restore</button></div>
+    <div class="sh"><button class="gbtn gl circle" data-act="close-sheet" aria-label="Cancel"><svg viewBox="0 0 14 14"><path d="M2 2l10 10M12 2L2 12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button><b>Restore Backup</b><button class="gbtn gl tint" data-act="do-restore">Restore</button></div>
     <textarea class="bk" id="bk" placeholder="Paste your backup here"></textarea>
     <div class="foot">This replaces everything on this phone with the backup.</div></div>`;
 }
@@ -350,7 +407,7 @@ function alertView(){
 }
 
 function tabbar(){
-  return `<nav class="tabbar">${[["week","Week"],["hist","History"],["set","Settings"]].map(([k,l]) =>
+  return `<nav class="tabbar gl">${[["week","Week"],["hist","History"],["set","Settings"]].map(([k,l]) =>
     `<button class="${S.tab===k?"on":""}" data-act="tab" data-t="${k}">${ICONS[k]}${l}</button>`).join("")}</nav>`;
 }
 
